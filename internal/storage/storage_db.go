@@ -28,14 +28,13 @@ func (s *Storage) MessageConsumed(id int64) error {
 
 }
 
-func (s *Storage) NumberOfProcessedMessages() (int, int, error) {
-	var total, processed int
+func (s *Storage) NumberOfProcessedMessages() (total int, processed int, err error) {
 
 	stmt := `SELECT 
     (SELECT COUNT(*) FROM messages) as total,
     (SELECT COUNT(*) FROM messages where processed = true) as processed`
 
-	err := s.db.QueryRow(stmt, i).Scan(&total, &processed)
+	err = s.db.QueryRow(stmt).Scan(&total, &processed)
 	if err != nil {
 		return 0, 0, err
 

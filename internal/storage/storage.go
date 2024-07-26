@@ -3,6 +3,8 @@ package storage
 import (
 	"database/sql"
 	"github.com/confluentinc/confluent-kafka-go/v2/kafka"
+	_ "github.com/jackc/pgx/v5"
+	_ "github.com/jackc/pgx/v5/stdlib"
 	"log"
 	"messagio/internal/config"
 	"messagio/internal/service"

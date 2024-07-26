@@ -1,5 +1,9 @@
 package service
 
+import (
+	"messagio/internal/api"
+)
+
 type Service struct {
 	St Storager
 }
@@ -12,3 +16,11 @@ type Storager interface {
 	Produce(string, []byte) error
 	Consume() (string, []byte, error)
 }
+
+func NewService(storager Storager) *Service {
+	return &Service{
+		storager,
+	}
+}
+
+var _ api.Servicer = &Service{}
