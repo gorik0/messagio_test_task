@@ -40,6 +40,7 @@ func init() {
 	bindViperEnv("ConsumerTopicID", "CONSUMER_TOPICID")
 	bindViperEnv("KafkaGroup", "KAFKA_GROUP")
 
+	viper.AutomaticEnv()
 }
 
 func bindViperPFlag(flagName string) {
@@ -60,4 +61,22 @@ func bindViperEnv(viperKey, envName string) {
 	}
 
 }
-func In() {}
+
+func ServerAddress() string {
+	return viper.GetString("ServerAddress")
+}
+func PostgresUrl() string {
+	return viper.GetString("PostgresUrl")
+}
+func KafkaBrokers() string {
+	return viper.GetString("KafkaBrokers")
+}
+func ProducerTopicID() string {
+	return viper.GetString("ProducerTopicID")
+}
+func ConsumerTopicID() string {
+	return viper.GetString("ConsumerTopicID")
+}
+func KafkaGroup() string {
+	return viper.GetString("KafkaGroup")
+}
