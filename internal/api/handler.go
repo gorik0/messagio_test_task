@@ -37,7 +37,7 @@ func (h *Handler) SetupRoutes() {
 }
 
 func (h *Handler) Index(ctx *gin.Context) {
-	web.Render(ctx.Writer, "test.html.gohtml")
+	web.Render(ctx.Writer, "test.page.gohtml")
 }
 
 func (h *Handler) MessageRecieve(ctx *gin.Context) {
